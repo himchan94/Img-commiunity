@@ -7,19 +7,19 @@ import Signup from "../pages/Signup";
 import Header from "../components/Header";
 import { Grid } from "../elements";
 
+import { ConnectedRouter } from "connected-react-router";
+import { history } from "../redux/configureStore";
+
 function App() {
   return (
     <React.Fragment>
-      <BrowserRouter>
-        <Route path="/" exact component={PostList} />
-      </BrowserRouter>
       <Grid>
         <Header></Header>
-        <BrowserRouter>
+        <ConnectedRouter history={history}>
           <Route path="/" exact component={PostList} />
           <Route path="/login" exact component={Login} />
           <Route path="/signup" exact component={Signup} />
-        </BrowserRouter>
+        </ConnectedRouter>
       </Grid>
     </React.Fragment>
   );

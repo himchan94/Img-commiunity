@@ -1,94 +1,32 @@
 import React from "react";
 import styled from "styled-components";
 
-import { Grid } from "../elements";
+import { Text, Grid } from "./index";
 
-const Input = React.memo((props) => {
-  const { line, onChange, onSubmit, placeholder, with_submit, value, type } =
-    props;
-
-  if (line < 2) {
-    if (with_submit) {
-      return (
-        <Grid is_flex>
-          <Oneline
-            //   onChange={(e) => {
-            //     onChange(e);
-            //   }}
-            type={type}
-            onKeyPress={(e) => {
-              if (e.key === "Enter") {
-                onSubmit(e);
-                e.target.value = "";
-              }
-            }}
-            placeholder={placeholder}
-          ></Oneline>
-        </Grid>
-      );
-    }
-
-    return (
-      <Oneline
-        type={type}
-        onChange={(e) => {
-          onChange(e);
-        }}
-        placeholder={placeholder}
-      ></Oneline>
-    );
-  }
-
-  if (value) {
-    return (
-      <Multiline
-        onChange={(e) => {
-          onChange(e);
-        }}
-        placeholder={placeholder}
-        rows={line}
-        value={value}
-      ></Multiline>
-    );
-  }
-
+const Input = (props) => {
+  const { label, placeholder, _onChange, type } = props;
   return (
-    <Multiline
-      onChange={(e) => {
-        onChange(e);
-      }}
-      placeholder={placeholder}
-      rows={line}
-    ></Multiline>
+    <React.Fragment>
+      <Grid>
+        <Text margin="0px">{label}</Text>
+        <ElInput type={type} placeholder={placeholder} onChange={_onChange} />
+      </Grid>
+    </React.Fragment>
   );
-});
-
-Input.defaultProps = {
-  onChange: (e) => {},
-  onSubmit: (e) => {},
-  line: 1,
-  placeholder: "텍스트를 입력해주세요 :)",
-  with_submit: null,
-  value: null,
-  type: "text",
 };
 
-const Oneline = styled.input`
-  width: 100%;
-  padding: 4px 8px;
-  margin: 16px 0px;
-  border: 1px solid #eeeeee;
-  min-height: 32px;
-  box-shadow: none;
-`;
+Input.defaultProps = {
+  label: "텍스트",
+  placeholder: "텍스트를 입력해주세요.",
+  type: "text",
+  _onChange: () => {},
+};
 
-const Multiline = styled.textarea`
+const ElInput = styled.input`
+  border: 1px solid #212121;
   width: 100%;
-  padding: 4px 8px;
-  min-height: 20vh;
-  margin: 16px 0px;
+  padding: 12px 4px;
   box-sizing: border-box;
-  border: 1px solid #eeeeee;
 `;
 
 export default Input;
