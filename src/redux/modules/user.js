@@ -94,6 +94,7 @@ const signupFB = (id, pwd, user_name) => {
 const loginCheckFB = () => {
   return function (dispatch, getState, { history }) {
     auth.onAuthStateChanged((user) => {
+      // 이 유저가 있는지 없는지 확인
       if (user) {
         dispatch(
           setUser({
@@ -114,7 +115,7 @@ const logoutFB = () => {
   return function (dispatch, getState, { history }) {
     auth.signOut().then(() => {
       dispatch(logOut());
-      history.replace("/");
+      history.replace("/"); //뒤로가기 해도 원래있던 페이지가 안나옹
     });
   };
 };
