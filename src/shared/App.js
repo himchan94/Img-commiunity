@@ -6,6 +6,7 @@ import Signup from "../pages/Signup";
 import PostWrite from "../pages/PostWrite";
 import PostDetail from "../pages/PostDetail";
 import Search from "../shared/Search";
+import Notification from "../pages/Notification";
 
 import Permit from "./Permit";
 
@@ -39,15 +40,16 @@ function App() {
           <Route path="/" exact component={PostList} />
           <Route path="/login" exact component={Login} />
           <Route path="/signup" exact component={Signup} />
-          <Route path="/write" exact component={PostWrite} />
+          <Route path="/write/:id" exact component={PostWrite} />
           <Route path="/post/:id" exact component={PostDetail} />
           <Route path="/search" component={Search} />
+          <Route path="/noti" component={Notification} />
         </ConnectedRouter>
       </Grid>
       <Permit>
         <Button
           _onClick={() => {
-            history.push("./write");
+            history.push("/write");
           }}
           is_float
           text="+"
