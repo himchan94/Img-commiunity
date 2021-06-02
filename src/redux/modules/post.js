@@ -337,6 +337,7 @@ const actionCreators = {
   addPostFB,
   editPostFB,
   getOnePostFB,
+  editPost,
 };
 
 export { actionCreators };

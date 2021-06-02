@@ -7,7 +7,7 @@ import { history } from "../redux/configureStore";
 
 import { Grid, Image, Text, Button } from "../elements";
 
-const Post = (props) => {
+const Post = React.memo((props) => {
   return (
     <React.Fragment>
       <Grid>
@@ -46,7 +46,7 @@ const Post = (props) => {
       </Grid>
     </React.Fragment>
   );
-};
+});
 
 export default Post;
 

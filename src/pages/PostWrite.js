@@ -15,8 +15,8 @@ const PostWrite = (props) => {
   const { history } = props;
 
   const post_id = props.match.params.id;
+  // console.log("포스트아이디", post_id);
   const is_edit = post_id ? true : false;
-
   let _post = is_edit ? post_list.find((p) => p.id === post_id) : null;
   // console.log(_post);
 
